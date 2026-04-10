@@ -1,7 +1,7 @@
 import { loadPersistedData, saveDataToLocalStorage, updateCircles, updateUi, visualizeFormErrors } from './steps/firststepandutils';
 import renderOrderSummary, { calculateTotal, createAddonRow } from './steps/fourthstep';
 import toggleBoxes, { changeRecurrencyState, hydrateStep2Dates, updateStep2Variables, visualizeStep2Errors } from './steps/secondstep';
-import storeAddonsChosen, { updateAddonPrices } from './steps/thirdstep';
+import storeAddonsChosen, { hydrateDataStep3, updateAddonPrices } from './steps/thirdstep';
 import './style/style.css';
 import type { addonsNames, globalData, planChoice } from './types';
 document.addEventListener('DOMContentLoaded', () => {
@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let promoTexts = document.querySelectorAll<HTMLParagraphElement>('.paragraph-down');
     let boxes = document.querySelectorAll<HTMLDivElement>('.box');
     let sectionLink = document.querySelector<HTMLAnchorElement>('#change-section');
+    let allCheckboxes = document.querySelectorAll <HTMLInputElement>('.form-control');
     let boxParagraphs = document.querySelectorAll <HTMLParagraphElement>('.section-box .text-secondary');
     let checkbox = document.querySelector<HTMLInputElement>('#billing-toggle');
     let btnsNext = document.querySelectorAll<HTMLButtonElement>('.btn-next');
@@ -30,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let totalParagraph = document.querySelector<HTMLParagraphElement>('#total-paragraph');
     let totalParagraphValue = document.querySelector<HTMLParagraphElement>('#total-paragraph-value');
     let step4valueParagraph = document.querySelector<HTMLParagraphElement>('#value-step4-paragraph');
+    let addons :Set <addonsNames> = new Set();
     let count = 0;
     let total = 0;
     let packagePrice : number;
@@ -107,8 +109,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log("Validation required!");
            }
         })
-    })
-    let addons :Set <addonsNames> = new Set();
+    })   
+    let functionalities = localStorage.getItem('functionalities');
+    if(functionalities){
+        let savedData = hydrateDataStep3(functionalities, allCheckboxes)        
+        globalData.addsOn = savedData;
+    }
    //listeners for the span circles and the boxes to make an active state for each of them
     boxes.forEach((box)=>{
         toggleBoxes(box, boxes);
