@@ -48,6 +48,10 @@ PORT=3000
 4. **Transaction handling** : If the payment was successful, the user is redirected to a success page where their order details are rendered from the database. If the payment was not successful, The user is redirected to a dedicated error page.
 5. **Session management**: Users can securely logout, at the first step, from the SPA.
 
+# Tehnical challenges
+* **API Security**: Securing endpoints against unauthorized access required integrating Passport.js middleware. I learned how to properly implement session persistence and protect sensitive routes, which significantly improved the application's overall security posture.
+* **Payment Synchronization**: Ensuring consistent state between Stripe and MongoDB was complex due to the asynchronous nature of webhooks. I implemented digital signature verification to validate requests, ensuring that only authenticated events could trigger database updates.
+
 # Growth directions
 * **OAuth Integration**: Adding Google and GitHub authentication to simplify the login process for users.
 * **Modern framework**: Using a modern front-end framework like React to ensure high-performance Virtual DOM
