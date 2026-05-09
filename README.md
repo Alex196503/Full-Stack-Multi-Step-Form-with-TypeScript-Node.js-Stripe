@@ -57,7 +57,7 @@ PORT=3000
 * **Modern framework**: Using a modern front-end framework like React to ensure high-performance Virtual DOM
 * **Real-time Notifications**: Implementing WebSockets (Socket.io) to provide instant updates on payment status and order processing.
 * **Subscription Management**: Adding a dedicated dashboard for users to upgrade, downgrade, or cancel their active subscriptions directly via Stripe Subscriptions.
-  
+ 
 # Documentation & resources
 * [TailwindCSS documentation](https://tailwindcss.com/)
 * [TypeScript documentation](https://www.typescriptlang.org/docs/handbook/utility-types.html)
@@ -67,6 +67,8 @@ PORT=3000
 * [Joi.dev documentation](https://joi.dev/api/18.x.x)
 * [Mongoose references](https://mongoosejs.com/docs/guide.html)
 * [Passport.js guide](https://www.passportjs.org/features/)
+
+![Image with the app interface](https://github.com/Alex196503/Full-Stack-Multi-Step-Form-with-TypeScript-Node.js-Stripe-MongoDB-storage/blob/80d7ada85441db450822d76a3a72d3116050adb8/screenshot2.png)
 
 ## Project Status
 - **Status** : Completed.
